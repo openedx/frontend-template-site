@@ -22,15 +22,15 @@ const siteConfig: SiteConfig = {
   ],
   externalRoutes: [
     {
-      role: 'profile',
+      role: 'org.openedx.frontend.role.profile',
       url: 'http://apps.local.openedx.io/profile/'
     },
     {
-      role: 'account',
+      role: 'org.openedx.frontend.role.account',
       url: 'http://apps.local.openedx.io/account/'
     },
     {
-      role: 'logout',
+      role: 'org.openedx.frontend.role.logout',
       url: 'http://local.openedx.io/logout'
     },
   ],
