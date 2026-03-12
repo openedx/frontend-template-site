@@ -3,7 +3,9 @@ npm-debug.log
 coverage
 module.config.js
 dist/
+packages/
 /*.tgz
+/.turbo
 
 ### i18n ###
 src/i18n/transifex_input.json

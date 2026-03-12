@@ -52,6 +52,77 @@ created when copying this template above.
 The dev server is running at `http://apps.local.openedx.io:8080 <http://apps.local.openedx.io:8080>`_
 or whatever port you setup.
 
+Local Development with Workspaces
+==================================
+
+This repository supports `npm workspaces`_ to enable local development of
+frontend apps (e.g., ``frontend-app-authn``, ``frontend-app-learner-dashboard``)
+and ``frontend-base`` itself, all running together in the context of a site.
+
+The ``packages/`` directory (gitignored) holds local checkouts of packages being
+developed.  These act as development-only overrides of the npm-published
+versions.
+
+Since symlinks cause module resolution failures (Node.js resolves to the real
+path, breaking hoisted dependency resolution), local checkouts should either be
+made directly under ``packages/`` or made available via bind mounts (or volume
+mounts, if running under Docker).  For example, if the checkouts are siblings
+of this repository::
+
+  mkdir -p packages/{frontend-base,frontend-app-authn,frontend-app-learner-dashboard}
+  cd packages
+  for i in *; do sudo mount --bind ../../${i} ${i}; done
+  cd ..
+  npm install
+
+`bindfs`_ can be used instead of ``sudo mount --bind`` to avoid requiring root
+privileges.
+
+.. _bindfs: https://bindfs.org/
+.. _npm workspaces: https://docs.npmjs.com/cli/using-npm/workspaces
+
+Version Placeholders
+--------------------
+
+The ``@openedx/`` packages use `semantic-release`_ and carry a placeholder
+version of ``0.0.0-dev`` in their ``package.json`` until they are published.
+Because npm resolves peer dependencies strictly, a workspace checkout at
+``0.0.0-dev`` will not satisfy a requirement like ``^1.0.0``.  To work
+around this, each ``@openedx/`` dependency in the site's ``package.json``
+includes ``|| 0.0.0-dev`` — for example,
+``"@openedx/frontend-base": "^1.0.0 || 0.0.0-dev"``.  If you add a new
+``@openedx/`` package that will be checked out as a workspace, make sure to
+include the same ``|| 0.0.0-dev`` suffix.
+
+.. _semantic-release: https://github.com/semantic-release/semantic-release
+
+Why Turborepo
+-------------
+
+Workspace packages must be built in dependency order — for example,
+``frontend-base`` before apps that depend on it — but npm is not smart enough
+to do this on its own.  `Turborepo`_ handles this automatically via
+``dependsOn: ["^build"]`` in ``turbo.json``, building the dependency graph and
+running tasks in the correct topological order.
+
+It also enables watch mode without race conditions: the ``clean`` target is
+decoupled from ``build`` so that watch rebuilds overwrite in place without
+wiping ``dist/``.
+
+Note that Turborepo collects anonymous telemetry by default. To disable it, set
+``TURBO_TELEMETRY_DISABLED=1`` in your environment.
+
+.. _Turborepo: https://turbo.build/
+
+Workspace Scripts
+-----------------
+
+- ``npm run build:packages`` — Build all workspace packages in dependency order.
+- ``npm run clean:packages`` — Run the ``clean`` script in each workspace package.
+- ``npm run dev:packages`` — Watch-build all workspace packages and start the
+  dev server, so that changes to any local dependency are picked up
+  automatically.
+
 Internationalization
 ====================
 
