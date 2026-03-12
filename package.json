@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/openedx/frontend-template-site.git"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "browserslist": [
     "extends @edx/browserslist-config"
   ],
@@ -14,8 +17,13 @@
     "*.scss"
   ],
   "scripts": {
-    "dev": "PORT=8080 openedx dev",
     "build": "openedx build",
+    "build:packages": "make build-packages",
+    "clean:packages": "make clean-packages",
+    "dev": "PORT=8080 openedx dev",
+    "dev:site": "make dev-site",
+    "dev:packages": "make dev-packages",
+    "clean": "make clean",
     "serve": "openedx serve"
   },
   "author": "Open edX",
@@ -26,12 +34,13 @@
   },
   "dependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.3",
-    "@openedx/frontend-app-authn": "^1.0.0-alpha.6",
-    "@openedx/frontend-app-learner-dashboard": "^1.0.0-alpha.6",
-    "@openedx/frontend-base": "^1.0.0-alpha.13"
+    "@openedx/frontend-app-authn": "^1.0.0-alpha || 0.0.0-dev",
+    "@openedx/frontend-app-learner-dashboard": "^1.0.0-alpha || 0.0.0-dev",
+    "@openedx/frontend-base": "^1.0.0-alpha || 0.0.0-dev"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "^1.5.0"
+    "@edx/browserslist-config": "^1.5.0",
+    "turbo": "^2.8.16"
   },
   "peerDependencies": {
     "@openedx/paragon": "^23",
