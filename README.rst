@@ -126,10 +126,51 @@ Workspace Scripts
 Internationalization
 ====================
 
-Please see refer to the `frontend-base i18n howto`_ for documentation on
-internationalization.
+For general information on how internationalization works in Open edX frontends,
+refer to the `frontend-base i18n howto`_.
 
 .. _frontend-base i18n howto: https://github.com/openedx/frontend-base/blob/master/docs/how_tos/i18n.rst
+
+Pulling Translations
+--------------------
+
+Translated strings for each package listed under ``atlasTranslations`` in
+``package.json`` are hosted in the `openedx-translations`_ repository. To fetch
+them before building the site, run::
+
+  npm run translations:pull
+
+This downloads the message files into ``src/i18n/messages/`` (one subdirectory
+per package) and then generates ``src/i18n/messages.ts``, which aggregates
+everything for the runtime.  Both the downloaded files and the generated module
+are gitignored, so translations must be pulled as part of any build or deploy
+pipeline.
+
+If translations have not been pulled, the build still succeeds because the
+webpack i18n fallback plugin supplies an empty module at build time.  The site
+will simply use the default English strings baked into each component.
+
+.. _openedx-translations: https://github.com/openedx/openedx-translations
+
+Site-level Translation Overrides
+--------------------------------
+
+To override or supplement translations provided by packages, add JSON files to
+``src/i18n/site-messages/``.  Each file is named after a locale
+(e.g., ``es_419.json``, ``fr.json``) and contains key-value pairs where the key
+is a message ID and the value is the replacement string::
+
+  src/i18n/site-messages/
+    es_419.json
+    fr.json
+
+When ``translations:pull`` runs, it regenerates ``src/i18n/messages.ts`` with
+site-messages included *last* in the array.  At runtime, all message sources are
+merged in order, so site-messages entries take precedence over the corresponding
+package translations.
+
+The ``translations:pull`` command never deletes ``src/i18n/site-messages/`` -
+only ``src/i18n/messages/`` is cleared and re-fetched each time.
 
 License
 *******

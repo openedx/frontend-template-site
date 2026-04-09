@@ -19,5 +19,8 @@ dev-packages:
 dev-site: bin-link
 	npm run dev
 
+pull_translations:
+	npm run translations:pull -- --atlas-options="$(ATLAS_OPTIONS)"
+
 clean:
 	rm -rf dist

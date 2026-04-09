@@ -24,13 +24,20 @@
     "dev:site": "make dev-site",
     "dev:packages": "make dev-packages",
     "clean": "make clean",
-    "serve": "openedx serve"
+    "serve": "openedx serve",
+    "translations:pull": "openedx translations:pull"
   },
   "author": "Open edX",
   "license": "AGPL-3.0",
   "homepage": "https://github.com/openedx/frontend-template-site#readme",
   "bugs": {
     "url": "https://github.com/openedx/frontend-template-site/issues"
+  },
+  "atlasTranslations": {
+    "dependencies": [
+      "@openedx/frontend-app-authn",
+      "@openedx/frontend-app-learner-dashboard"
+    ]
   },
   "dependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.3",
