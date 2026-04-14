@@ -2,7 +2,6 @@ import { EnvironmentTypes, SiteConfig, footerApp, headerApp, shellApp } from '@o
 import { authnApp } from '@openedx/frontend-app-authn';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
-import homeApp from './src/homeApp';
 
 import './src/site.scss';
 
@@ -22,7 +21,6 @@ const siteConfig: SiteConfig = {
     authnApp,
     learnerDashboardApp,
     instructorDashboardApp,
-    homeApp,
   ],
   externalRoutes: [
     {
