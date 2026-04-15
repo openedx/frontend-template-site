@@ -3,6 +3,8 @@ import { authnApp } from '@openedx/frontend-app-authn';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
 
+import { googleAnalyticsApp } from './src/googleAnalytics';
+
 import './src/site.scss';
 
 const siteConfig: SiteConfig = {
@@ -21,6 +23,12 @@ const siteConfig: SiteConfig = {
     authnApp,
     learnerDashboardApp,
     instructorDashboardApp,
+    {
+      ...googleAnalyticsApp,
+      config: {
+        GOOGLE_ANALYTICS_4_ID: 'G-TEST123',
+      },
+    },
   ],
   externalRoutes: [
     {
