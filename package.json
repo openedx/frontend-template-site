@@ -36,14 +36,17 @@
   "atlasTranslations": {
     "dependencies": [
       "@openedx/frontend-app-authn",
-      "@openedx/frontend-app-learner-dashboard"
+      "@openedx/frontend-app-learner-dashboard",
+      "@openedx/frontend-app-instructor-dashboard",
+      "@openedx/frontend-app-notifications"
     ]
   },
   "dependencies": {
-    "@edx/brand": "npm:@openedx/brand-openedx@^1.2.3",
+    "@openedx/brand-openedx": "^2.0.0",
     "@openedx/frontend-app-authn": "^1.0.0-alpha || 0.0.0-dev",
     "@openedx/frontend-app-learner-dashboard": "^1.0.0-alpha || 0.0.0-dev",
     "@openedx/frontend-app-instructor-dashboard": "^1.0.0-alpha || 0.0.0-dev",
+    "@openedx/frontend-app-notifications": "^3.0.0-alpha || 0.0.0-dev",
     "@openedx/frontend-base": "^1.0.0-alpha || 0.0.0-dev"
   },
   "devDependencies": {

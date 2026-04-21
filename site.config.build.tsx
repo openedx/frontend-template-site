@@ -2,8 +2,11 @@ import { EnvironmentTypes, SiteConfig, footerApp, headerApp, shellApp } from '@o
 import { authnApp } from '@openedx/frontend-app-authn';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
+import { notificationsApp } from '@openedx/frontend-app-notifications';
 
-import './src/site.scss';
+import '@openedx/frontend-base/shell/style';
+import '@openedx/brand-openedx/core.min.css';
+import '@openedx/brand-openedx/light.min.css';
 
 const siteConfig: SiteConfig = {
   siteId: 'frontend-template-site',
@@ -21,6 +24,7 @@ const siteConfig: SiteConfig = {
     authnApp,
     learnerDashboardApp,
     instructorDashboardApp,
+    notificationsApp,
   ],
   externalRoutes: [
     {
