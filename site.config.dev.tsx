@@ -15,6 +15,9 @@ const siteConfig: SiteConfig = {
   lmsBaseUrl: 'http://local.openedx.io:8000',
   loginUrl: 'http://local.openedx.io:8000/login',
   logoutUrl: 'http://local.openedx.io:8000/logout',
+  commonAppConfig: {
+    SUPPORT_URL: 'https://example.com/help/',
+  },
 
   environment: EnvironmentTypes.DEVELOPMENT,
   apps: [
@@ -23,7 +26,13 @@ const siteConfig: SiteConfig = {
     footerApp,
     authnApp,
     learnerDashboardApp,
-    instructorDashboardApp,
+    {
+      ...instructorDashboardApp,
+      config: {
+        ...instructorDashboardApp.config,
+        SUPPORT_URL: 'https://example.com/help/instructor',
+      },
+    },
     notificationsApp,
   ],
   externalRoutes: [
