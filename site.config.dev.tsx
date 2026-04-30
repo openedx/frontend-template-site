@@ -5,8 +5,8 @@ import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
 import { notificationsApp } from '@openedx/frontend-app-notifications';
 
 import '@openedx/frontend-base/shell/style';
-import '@openedx/brand-openedx/core.min.css';
-import '@openedx/brand-openedx/light.min.css';
+import '@edx/brand/core.min.css';
+import '@edx/brand/light.min.css';
 
 const siteConfig: SiteConfig = {
   siteId: 'frontend-template-dev',
