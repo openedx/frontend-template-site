@@ -13,6 +13,7 @@ const siteConfig: SiteConfig = {
   siteName: 'Frontend Template Site',
   baseUrl: 'http://apps.local.openedx.io',
   lmsBaseUrl: 'http://local.openedx.io',
+  cmsBaseUrl: 'http://studio.local.openedx.io',
   loginUrl: 'http://local.openedx.io/login',
   logoutUrl: 'http://local.openedx.io/logout',
 
