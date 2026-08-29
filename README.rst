@@ -74,6 +74,7 @@ of this repository::
   for i in *; do sudo mount --bind ../../${i} ${i}; done
   cd ..
   npm install
+  npm run dev:packages
 
 `bindfs`_ can be used instead of ``sudo mount --bind`` to avoid requiring root
 privileges.
