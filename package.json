@@ -1,6 +1,7 @@
 {
   "name": "@openedx/frontend-template-site",
   "version": "2.0.0",
+  "packageManager": "npm@11.12.1",
   "description": "Frontend site template",
   "repository": {
     "type": "git",
