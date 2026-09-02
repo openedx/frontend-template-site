@@ -73,11 +73,13 @@ of this repository::
   cd packages
   for i in *; do sudo mount --bind ../../${i} ${i}; done
   cd ..
-  npm install
   npm run dev:packages
 
 `bindfs`_ can be used instead of ``sudo mount --bind`` to avoid requiring root
 privileges.
+
+``dev:packages`` runs ``npm install`` first, since npm only creates the
+workspace symlinks in ``node_modules/`` at install time.
 
 .. _bindfs: https://bindfs.org/
 .. _npm workspaces: https://docs.npmjs.com/cli/using-npm/workspaces
@@ -120,9 +122,9 @@ Workspace Scripts
 
 - ``npm run build:packages`` — Build all workspace packages in dependency order.
 - ``npm run clean:packages`` — Run the ``clean`` script in each workspace package.
-- ``npm run dev:packages`` — Watch-build all workspace packages and start the
-  dev server, so that changes to any local dependency are picked up
-  automatically.
+- ``npm run dev:packages`` — Install (to link the workspaces), then watch-build
+  all workspace packages and start the dev server, so that changes to any local
+  dependency are picked up automatically.
 
 Internationalization
 ====================

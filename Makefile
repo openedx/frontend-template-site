@@ -14,6 +14,8 @@ clean-packages:
 	$(TURBO) run clean
 
 dev-packages:
+	# Re-establish workspace symlinks for any packages under packages/.
+	npm install
 	$(TURBO) run watch:build dev:site
 
 dev-site: bin-link
