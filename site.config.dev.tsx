@@ -2,6 +2,7 @@ import { EnvironmentTypes, SiteConfig, footerApp, headerApp, shellApp } from '@o
 import { adminConsoleApp } from '@openedx/frontend-app-admin-console';
 import { authnApp } from '@openedx/frontend-app-authn';
 import { catalogApp } from '@openedx/frontend-app-catalog';
+import { gradebookApp } from '@openedx/frontend-app-gradebook';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
 import { notificationsApp } from '@openedx/frontend-app-notifications';
@@ -30,6 +31,7 @@ const siteConfig: SiteConfig = {
     adminConsoleApp,
     authnApp,
     catalogApp,
+    gradebookApp,
     learnerDashboardApp,
     {
       ...instructorDashboardApp,
