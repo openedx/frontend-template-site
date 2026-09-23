@@ -7,6 +7,7 @@ import { gradebookApp } from '@openedx/frontend-app-gradebook';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
 import { notificationsApp } from '@openedx/frontend-app-notifications';
+import { profileApp } from '@openedx/frontend-app-profile';
 
 import '@openedx/frontend-base/shell/style';
 import '@edx/brand/core.min.css';
@@ -43,12 +44,9 @@ const siteConfig: SiteConfig = {
       },
     },
     notificationsApp,
+    profileApp,
   ],
   externalRoutes: [
-    {
-      role: 'org.openedx.frontend.role.profile',
-      url: 'http://apps.local.openedx.io:1995/profile/'
-    },
     {
       role: 'org.openedx.frontend.role.logout',
       url: 'http://local.openedx.io:8000/logout'
