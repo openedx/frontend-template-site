@@ -1,4 +1,5 @@
 import { EnvironmentTypes, SiteConfig, footerApp, headerApp, shellApp } from '@openedx/frontend-base';
+import { accountApp } from '@openedx/frontend-app-account';
 import { adminConsoleApp } from '@openedx/frontend-app-admin-console';
 import { authnApp } from '@openedx/frontend-app-authn';
 import { catalogApp } from '@openedx/frontend-app-catalog';
@@ -6,6 +7,7 @@ import { gradebookApp } from '@openedx/frontend-app-gradebook';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
 import { notificationsApp } from '@openedx/frontend-app-notifications';
+import { profileApp } from '@openedx/frontend-app-profile';
 
 import '@openedx/frontend-base/shell/style';
 import '@edx/brand/core.min.css';
@@ -28,6 +30,7 @@ const siteConfig: SiteConfig = {
     shellApp,
     headerApp,
     footerApp,
+    accountApp,
     adminConsoleApp,
     authnApp,
     catalogApp,
@@ -41,16 +44,9 @@ const siteConfig: SiteConfig = {
       },
     },
     notificationsApp,
+    profileApp,
   ],
   externalRoutes: [
-    {
-      role: 'org.openedx.frontend.role.profile',
-      url: 'http://apps.local.openedx.io:1995/profile/'
-    },
-    {
-      role: 'org.openedx.frontend.role.account',
-      url: 'http://apps.local.openedx.io:1997/account/'
-    },
     {
       role: 'org.openedx.frontend.role.logout',
       url: 'http://local.openedx.io:8000/logout'
