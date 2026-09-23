@@ -44,6 +44,7 @@
       "@openedx/frontend-app-learner-dashboard",
       "@openedx/frontend-app-instructor-dashboard",
       "@openedx/frontend-app-notifications",
+      "@openedx/frontend-app-profile",
       "@openedx/frontend-base"
     ]
   },
@@ -57,6 +58,7 @@
     "@openedx/frontend-app-instructor-dashboard": "^2.0.0-alpha || 0.0.0-dev",
     "@openedx/frontend-app-learner-dashboard": "^2.0.0-alpha || 0.0.0-dev",
     "@openedx/frontend-app-notifications": "^4.0.0-alpha || 0.0.0-dev",
+    "@openedx/frontend-app-profile": "^1.0.0-alpha || 0.0.0-dev",
     "@openedx/frontend-base": "^2.0.0-alpha || 0.0.0-dev"
   },
   "devDependencies": {
