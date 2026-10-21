@@ -10,8 +10,8 @@ import { notificationsApp } from '@openedx/frontend-app-notifications';
 import { profileApp } from '@openedx/frontend-app-profile';
 
 import '@openedx/frontend-base/shell/style';
-import '@edx/brand/core.min.css';
-import '@edx/brand/light.min.css';
+import '@openedx/brand-openedx/core.min.css';
+import '@openedx/brand-openedx/light.min.css';
 
 const siteConfig: SiteConfig = {
   siteId: 'frontend-template-dev',
