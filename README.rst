@@ -56,8 +56,9 @@ Local Development with Workspaces
 ==================================
 
 This repository supports `npm workspaces`_ to enable local development of
-frontend apps (e.g., ``frontend-app-authn``, ``frontend-app-learner-dashboard``)
-and ``frontend-base`` itself, all running together in the context of a site.
+frontend apps (e.g., ``frontend-app-authn``, ``frontend-app-learner-dashboard``),
+``frontend-base``, ``paragon``, and ``brand-openedx``, all running together in
+the context of a site.
 
 The ``packages/`` directory (gitignored) holds local checkouts of packages being
 developed.  These act as development-only overrides of the npm-published
@@ -96,6 +97,16 @@ includes ``|| 0.0.0-dev`` — for example,
 ``"@openedx/frontend-base": "^1.0.0 || 0.0.0-dev"``.  If you add a new
 ``@openedx/`` package that will be checked out as a workspace, make sure to
 include the same ``|| 0.0.0-dev`` suffix.
+
+The same applies to the ``peerDependencies`` of every app still installed from
+the registry.  When a shared dependency such as ``paragon`` or ``frontend-base``
+is checked out as a workspace, npm checks the published apps' peer ranges
+against ``0.0.0-dev``, and any app that declares plain ``^23`` makes
+``npm install`` fail with ``ERESOLVE``.  Apps built with frontend-base are
+expected to carry the suffix on all their ``@openedx/`` peers; see the
+`frontend-base migration how-to`_.
+
+.. _frontend-base migration how-to: https://github.com/openedx/frontend-base/blob/main/docs/how_tos/migrate-frontend-app.md
 
 .. _semantic-release: https://github.com/semantic-release/semantic-release
 
