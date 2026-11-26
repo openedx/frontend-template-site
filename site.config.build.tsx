@@ -6,6 +6,7 @@ import { catalogApp } from '@openedx/frontend-app-catalog';
 import { gradebookApp } from '@openedx/frontend-app-gradebook';
 import { instructorDashboardApp } from '@openedx/frontend-app-instructor-dashboard';
 import { learnerDashboardApp } from '@openedx/frontend-app-learner-dashboard';
+import { learningApp } from '@openedx/frontend-app-learning';
 import { notificationsApp } from '@openedx/frontend-app-notifications';
 import { profileApp } from '@openedx/frontend-app-profile';
 
@@ -33,11 +34,16 @@ const siteConfig: SiteConfig = {
     catalogApp,
     gradebookApp,
     learnerDashboardApp,
+    learningApp,
     instructorDashboardApp,
     notificationsApp,
     profileApp,
   ],
   externalRoutes: [
+    {
+      role: 'org.openedx.frontend.role.discussions',
+      url: 'http://apps.local.openedx.io/discussions'
+    },
     {
       role: 'org.openedx.frontend.role.logout',
       url: 'http://local.openedx.io/logout'
